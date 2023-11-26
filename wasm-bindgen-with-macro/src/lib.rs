@@ -1,4 +1,4 @@
-macro_rules! test_macro {
+macro_rules! with_wasm {
     ($name:ident {$field:ident: $t:ty}) => {
         #[wasm_bindgen::prelude::wasm_bindgen]
         pub struct $name {
@@ -9,7 +9,7 @@ macro_rules! test_macro {
 
 // wasm-pack build reports an error:
 //   error[E0425]: cannot find value `js` in this scope
-test_macro!(AStruct {
+with_wasm!(AStruct {
     a_field: u8
 });
 /*
