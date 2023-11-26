@@ -34,3 +34,12 @@ the original code with macro (the above) fails with error:
 ```
 error[E0425]: cannot find value `js` in this scope
 ```
+
+# Temporal solution
+I found a pretty violent solution for this issue.
+1. Create a crate for custom attribute which applies to a struct. (Let it be called as `with-wasm` crate)
+2. Make the custom attribute append `#[wasm_bindgen::prelude::wasm_bindgen] ` to the head of input token stream  
+   and name it like `with_wasm`.
+3. Replace `#[wasm_bindgen]` custom attribute in your original file with `#[with_wasm]`.
+
+This solution is just a wrapper for `wasm_bindgen` custom attribute but strangely this works well.
