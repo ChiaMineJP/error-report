@@ -31,4 +31,4 @@ pub struct AStruct {
 
 While the expanded code (the below) passes `wasm-pack build` without error,
 the original code with macro (the above) fails with error:
-`error[E0425]: cannot find value `js` in this scope`
+`error[E0425]: cannot find value 'js' in this scope`
